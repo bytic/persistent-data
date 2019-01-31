@@ -23,6 +23,7 @@
   "require": {
     "php": "^7.0",
     "bytic/session": "^0.9",
+    "bytic/cookie": "^0.9"
   },
   "require-dev": {
     "phpunit/phpunit": "^7.2",
