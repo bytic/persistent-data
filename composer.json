@@ -12,18 +12,22 @@
   ],
   "autoload": {
     "psr-4": {
+      "ByTIC\\PersistentData\\Legacy\\": "legacy",
       "ByTIC\\PersistentData\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "ByTIC\\PersistentData\\Tests\\": "tests/"
+      "ByTIC\\PersistentData\\Tests\\": "tests/src",
+      "ByTIC\\PersistentData\\Tests\\Fixtures\\": "tests/fixtures"
     }
   },
   "require": {
     "php": "^7.0",
-    "bytic/session": "^0.9",
-    "bytic/cookie": "^0.9"
+    "bytic/collections": "^1.0",
+    "bytic/cookie": "^0.9",
+    "bytic/orm": "^0.9",
+    "bytic/session": "^0.9"
   },
   "require-dev": {
     "phpunit/phpunit": "^7.2",
