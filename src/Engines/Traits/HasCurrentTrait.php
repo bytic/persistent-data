@@ -54,6 +54,21 @@ trait HasCurrentTrait
             return false;
         }
 
+        return $this->mergeDataIntoCurrentModel($model, $data);
+    }
+
+    /**
+     * @param Record $model
+     * @param array $data
+     * @return mixed
+     */
+    protected function mergeDataIntoCurrentModel($model, $data)
+    {
+        foreach ($data as $key => $value) {
+            if (!isset($model->{$key})) {
+                $model->{$key} = $value;
+            }
+        }
         return $model;
     }
 
