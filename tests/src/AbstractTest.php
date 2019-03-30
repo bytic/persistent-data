@@ -8,4 +8,10 @@ namespace ByTIC\PersistentData\Tests;
  */
 abstract class AbstractTest extends \PHPUnit\Framework\TestCase
 {
+
+    protected function tearDown()
+    {
+        parent::tearDown();
+        \Mockery::close();
+    }
 }

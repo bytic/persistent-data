@@ -40,6 +40,14 @@ trait HasCurrentTrait
      */
     protected function initCurrentModel()
     {
+        $this->current = $this->generateCurrentModel();
+    }
+
+    /**
+     * @return bool
+     */
+    protected function generateCurrentModel()
+    {
         $data = $this->getData();
         $model = $this->findModelFromData($data);
         if ($model) {

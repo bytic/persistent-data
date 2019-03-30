@@ -22,7 +22,7 @@ class CookiesEngine extends AbstractEngine
         if (empty($data)) {
             return false;
         }
-        return intval($data['id']);
+        return intval($data);
     }
 
     /**
