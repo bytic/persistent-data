@@ -50,11 +50,20 @@ trait HasCurrentTrait
     {
         $data = $this->getData();
         $model = $this->findModelFromData($data);
-        if ($model) {
-            return $model;
+        if (!$this->validateModelFoundFromData($model)) {
+            return false;
         }
 
-        return false;
+        return $model;
+    }
+
+    /**
+     * @param $model
+     * @return bool
+     */
+    protected function validateModelFoundFromData($model)
+    {
+        return is_object($model);
     }
 
     /**
