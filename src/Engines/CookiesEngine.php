@@ -15,13 +15,14 @@ class CookiesEngine extends AbstractEngine
 
     /**
      * @param $data
-     * @return boolean|Record
+     * @return bool|int
      */
-    protected function findModelFromData($data)
+    protected function parseDataForModelFindParams($data)
     {
-        $recordId = $data;
-
-        return $this->getManager()->findOne(intval($recordId));
+        if (empty($data)) {
+            return false;
+        }
+        return intval($data['id']);
     }
 
     /**

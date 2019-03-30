@@ -55,15 +55,25 @@ trait HasCurrentTrait
      */
     protected function findModelFromData($data)
     {
-        if (is_array($data)) {
-            if (isset($data['id']) && !empty($data['id'])) {
-                $recordId = intval($data['id']);
-
-                return $this->getManager()->findOne($recordId);
-            }
+        $recordId = $this->parseDataForModelFindParams($data);
+        if ($recordId > 0) {
+            return $this->getManager()->findOne($recordId);
         }
 
         return false;
+    }
+
+    /**
+     * @param $data
+     * @return bool|int
+     */
+    protected function parseDataForModelFindParams($data)
+    {
+        if (!is_array($data) || !isset($data['id']) || empty($data['id'])) {
+            return false;
+        }
+
+        return intval($data['id']);
     }
 
     abstract public function removeCurrentModel();

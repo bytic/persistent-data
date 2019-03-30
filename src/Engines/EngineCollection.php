@@ -49,7 +49,7 @@ class EngineCollection extends Collection
      */
     public function addByEngineType($type)
     {
-        $class = '\ByTIC\PersistentData\Engines\\'.ucfirst($type).'Engine';
+        $class = (strpos($type, '\\')) ? $type : '\ByTIC\PersistentData\Engines\\' . ucfirst($type) . 'Engine';
         $engine = new $class();
         $this->addEngine($engine);
 
