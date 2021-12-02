@@ -52,7 +52,7 @@ trait HasDataTrait
      */
     protected function generateDataFromModel($model)
     {
-        $method = 'generatePersistentData'.ucfirst($this->getName());
+        $method = 'generatePersistentData' . ucfirst($this->getName());
         if (method_exists($model, $method)) {
             return $model->$method();
         }

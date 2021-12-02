@@ -10,7 +10,6 @@ use ByTIC\PersistentData\Tests\Fixtures\Users\Users;
  */
 class PersistentManagerTraitTest extends AbstractTest
 {
-
     public function testSetCurrent()
     {
         $users = new Users();
