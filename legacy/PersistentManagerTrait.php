@@ -10,7 +10,6 @@ use Nip\Records\Record as Record;
  */
 trait PersistentManagerTrait
 {
-
     /**
      * Get persisted Record from Session
      *
