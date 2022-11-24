@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace ByTIC\PersistentData\Tests\Engines;
 
@@ -16,7 +17,7 @@ class CookiesEngineTest extends AbstractTest
         $engine = new CookiesEngine();
 
         $model = $engine->getCurrentModel();
-        self::assertFalse($model);
+        self::assertNull($model);
     }
 
     public function testGetData()

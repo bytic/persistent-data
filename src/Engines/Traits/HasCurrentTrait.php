@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace ByTIC\PersistentData\Engines\Traits;
 
@@ -36,22 +37,28 @@ trait HasCurrentTrait
     }
 
     /**
-     * @return bool
      */
-    protected function initCurrentModel()
+    protected function initCurrentModel(): void
     {
         $this->current = $this->generateCurrentModel();
     }
 
     /**
-     * @return bool
+     * @return null|Record
      */
     protected function generateCurrentModel()
     {
         $data = $this->getData();
+        if (is_object($data)) {
+            $model = $this->getManager()->getModel();
+            if ($data instanceof $model) {
+                return $data;
+            }
+        }
+
         $model = $this->findModelFromData($data);
         if (!$this->validateModelFoundFromData($model)) {
-            return false;
+            return null;
         }
 
         return $this->mergeDataIntoCurrentModel($model, $data);
@@ -60,7 +67,7 @@ trait HasCurrentTrait
     /**
      * @param Record $model
      * @param array $data
-     * @return mixed
+     * @return Record
      */
     protected function mergeDataIntoCurrentModel($model, $data)
     {
