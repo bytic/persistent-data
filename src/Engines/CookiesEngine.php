@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace ByTIC\PersistentData\Engines;
 
@@ -41,7 +42,7 @@ class CookiesEngine extends AbstractEngine
     {
         $varName = $this->getVarName();
 
-        return isset($_COOKIE[$varName]) ? $_COOKIE[$varName] : null;
+        return $_COOKIE[$varName] ?? null;
     }
 
     /**

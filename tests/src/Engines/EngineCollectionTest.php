@@ -1,10 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace ByTIC\PersistentData\Tests\Engines;
 
 use ByTIC\PersistentData\Engines\CookiesEngine;
 use ByTIC\PersistentData\Engines\EngineCollection;
-use ByTIC\PersistentData\Engines\SessionEngine;
+use ByTIC\PersistentData\Engines\RequestEngine;
 use ByTIC\PersistentData\Tests\AbstractTest;
 
 /**
@@ -24,7 +25,7 @@ class EngineCollectionTest extends AbstractTest
     {
         $collection = new EngineCollection();
 
-        $session = \Mockery::mock(SessionEngine::class)->makePartial();
+        $session = \Mockery::mock(RequestEngine::class)->makePartial();
         $session->shouldReceive('getCurrentModel')->once();
         $collection->addEngine($session);
 

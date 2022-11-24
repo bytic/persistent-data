@@ -3,13 +3,23 @@ declare(strict_types=1);
 
 namespace ByTIC\PersistentData\Engines;
 
+use Nip\Http\Request;
+
 /**
- * Class SessionEngine
+ * Class RequestEngine
  * @package ByTIC\PersistentData\Engines
  */
-class SessionEngine extends AbstractEngine
+class RequestEngine extends AbstractEngine
 {
-    protected $name = 'session';
+    protected $name = 'request';
+
+    protected Request $request;
+
+    public function __construct()
+    {
+        $this->request = request();
+    }
+
 
     /**
      * @return mixed
@@ -18,7 +28,7 @@ class SessionEngine extends AbstractEngine
     {
         $varName = $this->getVarName();
 
-        return $_SESSION[$varName] ?? null;
+        return $this->request->attributes->get($varName);
     }
 
     /**
@@ -27,12 +37,12 @@ class SessionEngine extends AbstractEngine
     protected function saveData($data)
     {
         $varName = $this->getVarName();
-        $_SESSION[$varName] = $data;
+        $this->request->attributes->set($varName, $data);
     }
 
     public function removeCurrentModel()
     {
         $varName = $this->getVarName();
-        unset($_SESSION[$varName]);
+        $this->request->attributes->remove($varName);
     }
 }
