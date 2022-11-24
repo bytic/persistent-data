@@ -20,7 +20,7 @@ class HasEnginesTraitTest extends AbstractTest
         $collection = $users->getPersistentDataEngines();
 
         self::assertInstanceOf(EngineCollection::class, $collection);
-        self::assertCount(2, $collection);
+        self::assertCount(3, $collection);
         self::assertInstanceOf(CookiesEngine::class, $collection->get('cookies'));
     }
 

@@ -58,8 +58,8 @@ trait HasEnginesTrait
     /**
      * @return array
      */
-    protected function getPersistentDataEnginesTypes()
+    protected function getPersistentDataEnginesTypes(): array
     {
-        return ['session', 'cookies'];
+        return ['request', 'session', 'cookies'];
     }
 }
