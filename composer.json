@@ -23,15 +23,25 @@
     }
   },
   "require": {
-    "php": ">=7.2",
+    "php": ">=8.0",
     "bytic/collections": "^1.0",
-    "bytic/cookie": "^0.9|^1.0",
-    "bytic/orm": "^0.9|^1.0",
-    "bytic/session": "^0.9|^1.0"
+    "bytic/cookie": "^1.0|^2.0",
+    "bytic/orm": "^1.0|^2.0",
+    "bytic/session": "^1.0|^2.0"
   },
   "require-dev": {
-    "bytic/http": "^0.9|^1.0",
+    "bytic/http": "^1.0|^2.0",
     "bytic/phpqatools": "^1.0",
     "mockery/mockery": "^1.0"
-  }
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "phpstan/extension-installer": true,
+      "ergebnis/composer-normalize": true,
+      "bytic/phpqatools": true
+    }
+  },
+  "prefer-stable": true,
+  "minimum-stability": "dev"
 }
